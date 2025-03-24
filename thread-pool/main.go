@@ -46,7 +46,7 @@ func (p *Pool) Wait() {
 func main() {
 	pool := NewPool(5)
 
-	for i := 0; i < 30; i++ {
+	for range 30 {
 		job := func() {
 			time.Sleep(1 * time.Second)
 			fmt.Println("Job: Completed")
