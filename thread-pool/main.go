@@ -18,7 +18,7 @@ func NewPool(workerCount int) *Pool {
 		workQueue: make(chan Job),
 	}
 	pool.wg.Add(workerCount)
-	for i := 0; i < workerCount; i++ {
+	for _ = range workerCount {
 		go func() {
 			defer pool.wg.Done()
 
@@ -39,8 +39,8 @@ func (p *Pool) AddJob(job Job) {
 }
 
 func (p *Pool) Wait() {
-	close(p.workQueue) // channels are blocking bounded buffers
 	p.wg.Wait()
+	close(p.workQueue) // channels are blocking bounded buffers
 }
 
 func main() {
