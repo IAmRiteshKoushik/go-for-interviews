@@ -18,7 +18,7 @@ func NewPool(workerCount int) *Pool {
 		workQueue: make(chan Job),
 	}
 	pool.wg.Add(workerCount)
-	for _ = range workerCount {
+	for range workerCount {
 		go func() {
 			defer pool.wg.Done()
 
