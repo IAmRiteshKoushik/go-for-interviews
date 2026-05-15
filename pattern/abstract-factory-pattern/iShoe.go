@@ -2,7 +2,7 @@ package main
 
 type IShoe interface {
 	setLogo(logo string)
-	setSie(size int)
+	setSize(size int)
 	getLogo() string
 	getSize() int
 }
